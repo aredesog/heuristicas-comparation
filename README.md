@@ -26,6 +26,7 @@ Explicar qual é o objetivo da otimização e quais critérios definem uma boa s
 .
 ├── src/
 ├── instances/
+├── include/
 ├── results/
 ├── Makefile
 └── README.md
