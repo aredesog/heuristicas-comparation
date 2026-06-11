@@ -1,7 +1,7 @@
 """
 Gera instâncias em .dat pra teste
-O de busca local usa .dat, entãoas instâncias estão
-sendo geradas nesse formato pra padronizar.
+O de busca local já usa .dat, então as instâncias são
+geradas nesse formato pra padronizar.
 As instâncias estão no formato
     num_nos num_arestas
     u v custo
@@ -36,6 +36,8 @@ def gerar_clusters_densos(n, seed):
         cidades.append((x, y))
     return cidades
 
+def gerar_clusters_dispersos(n, seed):
+    """Muitos clusters (10), sigma maior."""
     random.seed(seed) # define a seed, garante instancias iguais em todas execuções
     num_clusters = 10
     centros = [(random.uniform(100, 900), random.uniform(100, 900)) for _ in range(num_clusters)]
@@ -43,8 +45,8 @@ def gerar_clusters_densos(n, seed):
     for i in range(n):
         cx, cy = centros[i % num_clusters] #escolhe o centro 
         # sorteia a posição x,y da cidade em torno do centro, com 120 de desvio
-        x = random.gauss(cx, 120)
-        y = random.gauss(cy, 120)
+        x = random.gauss(cx, 80)
+        y = random.gauss(cy, 80)
         cidades.append((x, y))
     return cidades
 
