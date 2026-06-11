@@ -48,7 +48,27 @@ Explicar qual é o objetivo da otimização e quais critérios definem uma boa s
 
 ## Instâncias
 
-Foram utilizadas 25 instâncias de diferentes tamanhos para avaliar o desempenho dos algoritmos.
+Foram utilizadas 25 instâncias de diferentes tamanhos e configurações para avaliar o desempenho dos algoritmos.
+
+### Requisitos
+- Python 3
+
+Para gerar as instâncias, execute: 
+
+python3 geradorinstancias.py
+
+As instâncias serão salvas na pasta "instances/".
+
+### Instâncias geradas
+| Tipo | Descrição |
+|---|---|
+| Uniforme | Cidades espalhadas aleatoriamente |
+| Clusters Densos | Poucos grupos concentrados, bem separados |
+| Clusters Dispersos | Muitos grupos com fronteiras borradas |
+| Grade | Cidades em posição regular com leve ruído |
+| Circular | Cidades distribuídas em anel, centro vazio |
+
+Tamanhos: Para cada tipo, foram geradas instâncias com 100, 300, 500, 1000 e 5000 cidades.
 
 ## Resultados
 
