@@ -1,84 +1,172 @@
-# Heurísticas para Problema NP-Difícil
+# Comparação de Heurísticas para Problemas NP-Difíceis
 
+Este projeto tem como objetivo implementar e comparar duas abordagens heurísticas para resolução de problemas de otimização em grafos:
 
-O objetivo deste trabalho é implementar e comparar duas heurísticas para a resolução de um problema NP-Difícil: uma abordagem baseada em **Busca Local** e outra baseada em **Algoritmo Evolutivo**, analisando o desempenho de ambas em termos de tempo de execução e qualidade das soluções encontradas.
+* **Busca Local**
+* **Algoritmo Evolutivo**
+
+O foco do trabalho é analisar o desempenho dessas técnicas considerando a qualidade das soluções encontradas e o tempo de execução.
 
 ## Integrantes
 
-- Guilherme Aredes
-- Carolos Eduardo
-- Erick Pereira
-- Marcos Felipe
-- Diogo Silva
+* Guilherme Aredes
+* Carlos Eduardo
+* Erick Pereira
+* Marcos Felipe
+* Diogo Silva
 
+---
 
-### Definição
+## Objetivo
 
-Caixeiro Viajante foi o Problema NP-dificil escolhido.
+Problemas NP-Difíceis frequentemente possuem espaços de busca muito grandes, tornando inviável a obtenção da solução ótima por métodos exatos em instâncias de grande porte.
 
-### Objetivo
+Dessa forma, este trabalho compara duas metaheurísticas amplamente utilizadas:
 
-Explicar qual é o objetivo da otimização e quais critérios definem uma boa solução.
+1. **Busca Local**, baseada em melhorias sucessivas de uma solução inicial.
+2. **Algoritmo Evolutivo**, inspirado em mecanismos de seleção natural e evolução.
+
+Os algoritmos são avaliados considerando:
+
+* Qualidade da solução obtida;
+* Tempo de execução;
+* Escalabilidade em instâncias de diferentes tamanhos.
+
+---
 
 ## Estrutura do Projeto
 
 ```text
 .
 ├── src/
-├── instances/
+│   ├── main.c
+│   ├── busca_local.c
+│   ├── evolutivo.c
+│   └── ...
 ├── include/
+│   └── heuristicas.h
+├── instances/
+│   └── instâncias de teste
 ├── results/
+│   └── resultados experimentais
+├── gerador.c
 ├── Makefile
 └── README.md
 ```
 
-## Algoritmos
+---
+
+## Representação da Instância
+
+As instâncias são representadas por um grafo ponderado não direcionado.
+
+Formato do arquivo:
+
+```text
+<num_nos> <num_arestas>
+<u> <v> <peso>
+<u> <v> <peso>
+...
+```
+
+Exemplo:
+
+```text
+4 6
+0 1 10
+0 2 15
+0 3 20
+1 2 35
+1 3 25
+2 3 30
+```
+
+---
+
+## Algoritmos Implementados
 
 ### Busca Local
-- Solução inicial
-- Estrutura de vizinhança
-- Critério de parada
+
+A busca local parte de uma solução inicial e explora soluções vizinhas em busca de melhorias sucessivas.
+
+Características:
+
+* Construção de solução inicial;
+* Exploração de vizinhança;
+* Aceitação de melhorias;
+* Critério de parada baseado em estagnação ou limite de iterações.
 
 ### Algoritmo Evolutivo
-- Inicialização da população
-- Seleção
-- Crossover
-- Mutação
-- Critério de parada
 
-## Instâncias
+O algoritmo evolutivo trabalha com uma população de soluções candidatas.
 
-Foram utilizadas 25 instâncias de diferentes tamanhos e configurações para avaliar o desempenho dos algoritmos.
+Etapas:
 
-### Requisitos
-- Python 3
+* Inicialização da população;
+* Avaliação de fitness;
+* Seleção dos indivíduos;
+* Operadores de crossover;
+* Operadores de mutação;
+* Critério de parada baseado em número de gerações.
 
-Para gerar as instâncias, execute: 
+---
 
-python3 geradorinstancias.py
+Exemplo de compilação:
 
-As instâncias serão salvas na pasta "instances/".
+```bash
+gcc gerador.c -o gerador
+```
 
-### Instâncias geradas
-| Tipo | Descrição |
-|---|---|
-| Uniforme | Cidades espalhadas aleatoriamente |
-| Clusters Densos | Poucos grupos concentrados, bem separados |
-| Clusters Dispersos | Muitos grupos com fronteiras borradas |
-| Grade | Cidades em posição regular com leve ruído |
-| Circular | Cidades distribuídas em anel, centro vazio |
+Execução:
 
-Tamanhos: Para cada tipo, foram geradas instâncias com 100, 300, 500, 1000 e 5000 cidades.
+```bash
+./gerador > instancia.dat
+```
 
-## Resultados
+---
 
-Os algoritmos foram comparados considerando:
+## Compilação
 
-- Tempo de execução
-- Qualidade da solução
+Utilizando Makefile:
 
-| Instância | Busca Local | Evolutivo |
-|-----------|------------|------------|
-| I01 | - | - |
-| I02 | - | - |
-| I03 | - | - |
+```bash
+make
+```
+
+Ou manualmente:
+
+```bash
+gcc src/*.c -Iinclude -o heuristicas
+```
+
+---
+
+## Execução
+
+Executando uma instância:
+
+```bash
+./heuristicas instancia.dat
+```
+
+Saída esperada:
+
+```text
+Busca Local: <valor_solucao> <tempo_execucao>
+Evolutivo: <valor_solucao> <tempo_execucao>
+```
+
+Onde:
+
+* O primeiro valor corresponde à qualidade da solução;
+* O segundo valor representa o tempo de execução em segundos.
+
+---
+# Valores
+
+As heurísticas são comparadas utilizando:
+
+* Valor da solução obtida;
+* Tempo de execução;
+* Comportamento em diferentes tamanhos de instância.
+
