@@ -38,20 +38,16 @@ Os algoritmos são avaliados considerando:
 
 ```text
 .
-├── src/
-│   ├── main.c
-│   ├── busca_local.c
-│   ├── evolutivo.c
-│   └── ...
-├── include/
-│   └── heuristicas.h
-├── instances/
-│   └── instâncias de teste
-├── results/
-│   └── resultados experimentais
-├── gerador.c
-├── Makefile
-└── README.md
+.├── tp-4/
+.│ └── instances/
+.│ └── instâncias de teste
+.├── .gitignore
+.├── Makefile
+.├── README.md
+.├── base.c
+.├── gera.c
+.├── heuristicas.c
+.└── heuristicas.h
 ```
 
 ---
