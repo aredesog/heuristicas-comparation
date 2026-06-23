@@ -105,21 +105,6 @@ Etapas:
 * Operadores de mutação;
 * Critério de parada baseado em número de gerações.
 
----
-
-Exemplo de compilação:
-
-```bash
-gcc gerador.c -o gerador
-```
-
-Execução:
-
-```bash
-./gerador > instancia.dat
-```
-
----
 
 ## Compilação
 
